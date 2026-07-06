@@ -1,0 +1,124 @@
+/* ============================================================
+   OpportuniMap — Map Styles (Light Theme Leaflet integration)
+   ============================================================ */
+
+/* ── MAP CONTAINER ── */
+#map,
+.map-container {
+  width: 100%;
+  height: 450px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+}
+
+/* ── POPUP CUSTOMIZATION ── */
+.leaflet-popup-content-wrapper {
+  background: #ffffff !important;
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 16px 20px !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.leaflet-popup-content h3,
+.leaflet-popup-content strong {
+  color: #1e3a8a;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.leaflet-popup-content a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.leaflet-popup-content a:hover {
+  text-decoration: underline;
+  color: #1d4ed8;
+}
+
+.leaflet-popup-tip {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0;
+  box-shadow: none !important;
+}
+
+/* Close button */
+.leaflet-popup-close-button {
+  color: #64748b !important;
+  font-size: 20px !important;
+  width: 28px !important;
+  height: 28px !important;
+  line-height: 28px !important;
+  top: 8px !important;
+  right: 8px !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: #1e293b !important;
+  background: #f1f5f9 !important;
+  border-radius: 50%;
+}
+
+/* ── CUSTOM MARKER PULSE ── */
+.marker-pulse {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.marker-pulse::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.3);
+  animation: markerPulse 2s ease-out infinite;
+}
+
+@keyframes markerPulse {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+/* ── MAP LOADING OVERLAY ── */
+.map-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 450px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  #map, .map-container, .map-loading { height: 350px; }
+}

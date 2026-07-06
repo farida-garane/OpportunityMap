@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon profil — OpportuniMap</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body data-require-auth="true">
+
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand"><i class="fa-solid fa-map-location-dot"></i> Opportuni<span>Map</span></a>
+      <nav class="navbar-nav">
+        <ul class="navbar-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="opportunities.html">Opportunités</a></li>
+          <li><a href="favorites.html">Favoris</a></li>
+          <li><a href="dashboard.html">Tableau de bord</a></li>
+          <li><a href="profile.html" aria-current="page">Profil</a></li>
+        </ul>
+        <div class="navbar-actions">
+          <a href="notifications.html" class="navbar-icon" title="Notifications"><i class="fa-regular fa-bell"></i></a>
+          <a href="login.html" class="btn btn-outline btn-sm">Connexion</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="profile-page">
+    <div class="container">
+      <header class="page-header">
+        <h1>Mon profil</h1>
+        <p class="page-subtitle">Informations de votre compte</p>
+      </header>
+
+      <!-- CARTE PROFIL -->
+      <div class="profile-card">
+        <div class="profile-avatar">
+          <i class="fa-solid fa-user-circle"></i>
+        </div>
+        <dl class="profile-info">
+          <div>
+            <dt>Nom complet</dt>
+            <dd id="profile-name">Chargement...</dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd id="profile-email">Chargement...</dd>
+          </div>
+          <div>
+            <dt>Ville</dt>
+            <dd id="profile-city">Non renseignée</dd>
+          </div>
+          <div>
+            <dt>Domaine</dt>
+            <dd id="profile-field">Non renseigné</dd>
+          </div>
+          <div>
+            <dt>Membre depuis</dt>
+            <dd id="profile-date">—</dd>
+          </div>
+        </dl>
+        <div class="profile-actions">
+          <button type="button" class="btn btn-primary" id="btn-edit-profile">Modifier le profil</button>
+          <button type="button" class="btn btn-secondary" id="logout-btn">Déconnexion</button>
+        </div>
+      </div>
+
+      <!-- MES OPPORTUNITÉS PUBLIÉES -->
+      <div class="profile-card">
+        <div class="section-header">
+          <h2>Mes opportunités publiées</h2>
+        </div>
+        <div class="cards-grid" id="my-opportunities">
+          <p class="loading">Chargement de vos opportunités...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="enhanced-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo"><i class="fa-solid fa-map-location-dot"></i> OpportuniMap</a>
+        <p class="footer-desc">Plateforme centralisant les opportunités professionnelles et éducatives au Burkina Faso.</p>
+      </div>
+      <div class="footer-links">
+        <h3>Liens rapides</h3>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="opportunities.html">Toutes les offres</a></li>
+          <li><a href="register.html">S'inscrire</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 OpportuniMap — Burkina Faso</p>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+/* ============================================================
+   OpportuniMap — Base Styles (Shared)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --color-primary: #1e3a8a;
+  --color-primary-light: #2563eb;
+  --color-primary-dark: #1e3a5f;
+  --color-secondary: #f59e0b;
+  --color-bg: #f4f7f9;
+  --color-surface: #ffffff;
+  --color-text: #1e293b;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  
+  --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.1);
+  
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  
+  --nav-height: 80px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 50%;
+  
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 15px; line-height: 1.7; color: var(--color-text); background: var(--color-bg); }
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.hidden { display: none !important; }
+a { color: var(--color-primary-light); text-decoration: none; }
+h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--color-primary-dark); }
+ul { list-style: none; }
+
+/* NAVBAR */
+.navbar { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border); z-index: 1000; }
+.navbar .container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+.navbar-brand { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--color-primary) !important; display: flex; align-items: center; gap: 8px; }
+.navbar-links { display: flex; gap: 8px; }
+.navbar-links li a { padding: 8px 16px; color: var(--color-text-secondary); font-weight: 500; border-radius: var(--radius-sm); }
+.navbar-links li a:hover, .navbar-links li a[aria-current="page"] { color: var(--color-primary); background: var(--color-bg); }
+
+/* BUTTONS */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-weight: 600; border: none; border-radius: var(--radius-md); cursor: pointer; transition: var(--transition-base); }
+.btn-primary { background: var(--color-primary); color: #fff !important; }
+.btn-primary:hover { background: var(--color-primary-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn-secondary { background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text-secondary); }
+.btn-secondary:hover { background: var(--color-bg); color: var(--color-primary); }
+.btn-outline { background: transparent; border: 1.5px solid var(--color-primary); color: var(--color-primary); }
+.btn-sm { padding: 8px 16px; font-size: 0.85rem; }
+.btn-link { background: none; border: none; color: var(--color-primary); font-weight: 600; cursor: pointer; padding: 4px; }
+
+/* FOOTER */
+.enhanced-footer { background: var(--color-primary-dark); color: #fff; padding-top: 60px; margin-top: 60px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; padding-bottom: 40px; }
+.footer-logo { color: #fff !important; font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; gap: 8px; margin-bottom: 12px;}
+.footer-desc, .footer-links a { color: #cbd5e1; }
+.footer-links h3 { color: #fff; margin-bottom: 16px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 24px 0; text-align: center; color: #94a3b8; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) { .navbar-links { display: none; } .footer-grid { grid-template-columns: 1fr; } }

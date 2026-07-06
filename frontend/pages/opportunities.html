@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Parcourez ou publiez des opportunités sur OpportuniMap.">
+  <title>Opportunités — OpportuniMap</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/opportunities.css">
+  <link rel="stylesheet" href="../css/map.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand"><i class="fa-solid fa-map-location-dot"></i> Opportuni<span>Map</span></a>
+      <ul class="navbar-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="opportunities.html" aria-current="page">Opportunités</a></li>
+        <li><a href="favorites.html" class="auth-only hidden">Favoris</a></li>
+        <li><a href="notifications.html" class="auth-only hidden">Notifications</a></li>
+        <li><a href="dashboard.html" class="auth-only hidden">Tableau de bord</a></li>
+        <li><a href="profile.html" class="auth-only hidden">Profil</a></li>
+        <li><a href="login.html" class="guest-only">Connexion</a></li>
+        <li><a href="register.html" class="guest-only">Inscription</a></li>
+        <li><button type="button" id="logout-btn" class="auth-only hidden btn-link">Déconnexion</button></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="page-header-flex">
+      <h1>Opportunités</h1>
+      <div class="opportunities-actions">
+        <button type="button" class="tab-btn active" data-tab="browse">Parcourir</button>
+        <button type="button" class="tab-btn auth-only hidden" data-tab="publish">Publier une opportunité</button>
+      </div>
+    </div>
+
+    <!-- ===== BROWSE TAB ===== -->
+    <section id="tab-browse" class="tab-panel">
+
+      <!-- Sub-view: list -->
+      <div id="browse-list">
+
+        <div class="form-filters">
+          <select id="filter-type">
+            <option value="">Tous les types</option>
+            <option value="internship">Stages</option>
+            <option value="competition">Concours</option>
+            <option value="training">Formations</option>
+            <option value="event">Événements</option>
+          </select>
+
+          <select id="filter-field">
+            <option value="">Tous les domaines</option>
+            <option value="Computer Science">Informatique</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Entrepreneurship">Entrepreneuriat</option>
+            <option value="Agriculture">Agriculture</option>
+            <option value="Engineering">Ingénierie</option>
+            <option value="Education">Éducation</option>
+          </select>
+
+          <input type="text" id="filter-city" placeholder="Entrer une ville...">
+        </div>
+
+        <div id="opportunities-list" class="card-grid" aria-live="polite">
+          <p class="empty-state">Chargement des opportunités…</p>
+        </div>
+      </div>
+
+      <!-- Sub-view: detail (hidden until an opportunity is selected) -->
+      <div id="browse-detail" class="hidden">
+        <button type="button" id="back-to-list-btn" class="btn btn-secondary mb-24">← Retour à la liste</button>
+        <div id="opportunity-detail"></div>
+      </div>
+
+    </section>
+
+    <!-- ===== PUBLISH TAB ===== -->
+    <section id="tab-publish" class="tab-panel hidden">
+      <div class="form">
+        <h2>Publier une opportunité</h2>
+        <form id="add-opportunity-form">
+          <div class="form-group">
+            <label for="title">Titre</label>
+            <input type="text" id="title" required>
+          </div>
+
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select id="type" required>
+              <option value="internship">Stage</option>
+              <option value="competition">Concours</option>
+              <option value="training">Formation</option>
+              <option value="event">Événement</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="field">Domaine</label>
+            <input type="text" id="field" placeholder="Ex: Informatique">
+          </div>
+
+          <div class="form-group">
+            <label for="city">Ville</label>
+            <input type="text" id="city" placeholder="Ex: Ouagadougou">
+          </div>
+
+          <div class="form-group">
+            <label for="deadline">Date limite</label>
+            <input type="date" id="deadline">
+          </div>
+
+          <div class="form-group">
+            <label for="link">Lien externe</label>
+            <input type="url" id="link" placeholder="https://...">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Publier</button>
+          <p id="form-error" class="form-error"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/map.js"></script>
+  <script src="../js/opportunity-detail.js"></script>
+  <script src="../js/opportunities.js"></script>
+</body>
+</html>

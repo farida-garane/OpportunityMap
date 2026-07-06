@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpportuniMap centralise les stages, concours, formations et événements au Burkina Faso.">
+  <title>OpportuniMap — Accès équitable aux opportunités</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand"><i class="fa-solid fa-map-location-dot"></i> Opportuni<span>Map</span></a>
+      <nav class="navbar-nav">
+        <ul class="navbar-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="opportunities.html">Opportunités</a></li>
+          <li><a href="favorites.html">Favoris</a></li>
+          <li><a href="dashboard.html">Tableau de bord</a></li>
+          <li><a href="profile.html">Profil</a></li>
+        </ul>
+        <div class="navbar-actions">
+          <a href="notifications.html" class="navbar-icon" title="Notifications"><i class="fa-regular fa-bell"></i></a>
+          <a href="login.html" class="btn btn-outline btn-sm">Connexion</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1>Votre prochaine opportunité commence ici</h1>
+        <p class="slogan">Stages, concours, formations et événements au Burkina Faso.</p>
+        <div class="hero-actions">
+          <a href="opportunities.html" class="btn btn-primary">Découvrir les opportunités</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories-section">
+      <div class="container">
+        <div class="section-title text-center">
+          <h2>Explorez par catégorie</h2>
+          <p>Trouvez exactement ce que vous cherchez.</p>
+        </div>
+        <div class="categories-grid">
+          <a href="opportunities.html?type=internship" class="category-card">
+            <div class="icon-wrapper"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3>Stages</h3>
+            <p>Plongez dans le monde professionnel.</p>
+          </a>
+          <a href="opportunities.html?type=competition" class="category-card">
+            <div class="icon-wrapper"><i class="fa-solid fa-trophy"></i></div>
+            <h3>Concours</h3>
+            <p>Tentez votre chance et démarquez-vous.</p>
+          </a>
+          <a href="opportunities.html?type=training" class="category-card">
+            <div class="icon-wrapper"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3>Formations</h3>
+            <p>Développez de nouvelles compétences.</p>
+          </a>
+          <a href="opportunities.html?type=event" class="category-card">
+            <div class="icon-wrapper"><i class="fa-solid fa-calendar-days"></i></div>
+            <h3>Événements</h3>
+            <p>Conférences, forums, salons et rencontres.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works-section">
+      <div class="container">
+        <div class="section-title text-center">
+          <h2>Comment ça marche ?</h2>
+          <p>Un processus simple et transparent.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card" onclick="window.location.href='register.html'" style="cursor: pointer;">
+            <div class="step-number">1</div>
+            <div class="step-icon"><i class="fa-regular fa-id-card"></i></div>
+            <h3>Créez un profil</h3>
+            <p>Inscrivez-vous en quelques clics et renseignez votre domaine et votre ville.</p>
+          </div>
+          <div class="step-card" onclick="window.location.href='opportunities.html'" style="cursor: pointer;">
+            <div class="step-number">2</div>
+            <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <h3>Trouvez l'offre idéale</h3>
+            <p>Utilisez le filtrage intelligent pour trouver ce qui correspond à votre profil.</p>
+          </div>
+          <div class="step-card" onclick="window.location.href='favorites.html'" style="cursor: pointer;">
+            <div class="step-number">3</div>
+            <div class="step-icon"><i class="fa-solid fa-bookmark"></i></div>
+            <h3>Sauvegardez et suivez</h3>
+            <p>Ajoutez vos favoris et suivez vos opportunités depuis votre tableau de bord.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta-section">
+      <div class="container cta-content">
+        <h2>Prêt à trouver votre prochaine opportunité ?</h2>
+        <p>Rejoignez OpportuniMap et accédez à l'information, où que vous soyez au Burkina Faso.</p>
+        <a href="register.html" class="btn btn-primary guest-only">Créer un compte gratuitement</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="enhanced-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo"><i class="fa-solid fa-map-location-dot"></i> OpportuniMap</a>
+        <p class="footer-desc">Plateforme centralisant les opportunités professionnelles et éducatives au Burkina Faso.</p>
+      </div>
+      <div class="footer-links">
+        <h3>Liens rapides</h3>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="opportunities.html">Toutes les offres</a></li>
+          <li><a href="add-opportunity.html">Publier une offre</a></li>
+          <li><a href="register.html">S'inscrire</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 OpportuniMap — Burkina Faso</p>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
