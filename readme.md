@@ -1,60 +1,60 @@
 # 🗺️ OpportuniMap
 
-**Centraliser les opportunités professionnelles au Burkina Faso — pour un accès équitable à l'information.**
+**Centralizing professional opportunities in Burkina Faso — for equitable access to information.**
 
-Projet soumis pour le hackathon *"Défis mondiaux, solutions locales"* sur Devpost.
+Project submitted for the *"Global Challenges, Local Solutions"* hackathon on Devpost.
 
 ---
 
-## Le problème
+## The Problem
 
-Au Burkina Faso, l'accès aux opportunités professionnelles (stages, concours, formations, événements) est inégal :
+In Burkina Faso, access to professional opportunities (internships, competitions, trainings, events) is unequal:
 
-- Les opportunités sont concentrées dans les grandes villes, surtout Ouagadougou
-- L'information circule surtout par bouche-à-oreille, WhatsApp ou Facebook
-- Les étudiants des autres régions sont désavantagés, non par manque de mérite, mais par manque d'accès à l'information
-- Il n'existe pas de plateforme unique qui centralise ces opportunités
+- Opportunities are concentrated in major cities, especially Ouagadougou.
+- Information circulates mostly by word-of-mouth, WhatsApp, or Facebook.
+- Students from other regions are disadvantaged, not due to a lack of merit, but a lack of access to information.
+- There is no single platform that centralizes these opportunities.
 
-## La solution
+## The Solution
 
-**OpportuniMap** centralise, organise et diffuse les opportunités professionnelles et éducatives en un seul endroit, avec filtrage et géolocalisation, pour un accès à l'information plus équitable dans tout le pays.
+**OpportuniMap** centralizes, organizes, and broadcasts professional and educational opportunities in one place, featuring smart filtering and geolocation for more equitable access to information across the country.
 
-![Page d'accueil](../screenshots/home.png)
+![Home page](screenshots/home.png)
 
-## Fonctionnalités
+## Features
 
-| Fonctionnalité | Description |
+| Feature | Description |
 |---|---|
-| Centralisation | Stages, concours, formations, événements regroupés en un seul endroit |
-| Filtrage intelligent | Recherche par type, domaine, ville |
-| Carte interactive | Vue d'ensemble par ville + localisation par opportunité |
-| Recommandations personnalisées | Mise en avant selon le domaine/ville du profil utilisateur |
-| Notifications | Alertes pour les nouvelles opportunités |
-| Ajout d'opportunités | Publication communautaire par les utilisateurs |
-| Favoris | Sauvegarde pour postuler plus tard |
-| Tableau de bord | Résumé personnel : favoris, publications, notifications |
+| Centralization | Internships, competitions, trainings, and events grouped in a single place |
+| Smart Filtering | Search by type, field, and city |
+| Interactive Map | City-level overview + location per opportunity |
+| Personalized Recommendations | Highlighted based on the user profile's field/city |
+| Notifications | Alerts for new opportunities |
+| Add Opportunities | Community publishing by users |
+| Favorites | Save to apply later |
+| Dashboard | Personal summary: favorites, publications, notifications |
 
-![Liste des opportunités avec filtres](../screenshots/opportunities.png)
+![Opportunity list with filters](screenshots/opportunities.png)
 
-![Carte des opportunités par ville](../screenshots/map.png)
+![Opportunity map by city](screenshots/map.png)
 
-## Stack technique
+## Tech Stack
 
-**Backend** : Node.js, Express, PostgreSQL, JWT + bcrypt
-**Frontend** : HTML / CSS / JavaScript, Leaflet + OpenStreetMap pour la carte
+**Backend**: Node.js, Express, PostgreSQL, JWT + bcrypt
+**Frontend**: HTML / CSS / JavaScript, Leaflet + OpenStreetMap for the map
 
 ## Architecture
 
 ```
 OpportunityMap/
 ├── backend/
-│   ├── config/        # Connexion PostgreSQL
-│   ├── models/        # Déclaration des tables
-│   ├── controllers/    # Requêtes/réponses HTTP
-│   ├── services/       # Logique métier + requêtes SQL
-│   ├── routes/         # Endpoints de l'API
-│   ├── middleware/     # Vérification JWT + erreurs
-│   ├── seeds/           # Données de démonstration
+│   ├── config/        # PostgreSQL Connection
+│   ├── models/        # Table Declarations
+│   ├── controllers/    # HTTP Requests/Responses
+│   ├── services/       # Business Logic + SQL Queries
+│   ├── routes/         # API Endpoints
+│   ├── middleware/     # JWT Verification + Errors
+│   ├── seeds/           # Demo Data
 │   └── server.js
 └── frontend/
     ├── pages/
@@ -69,57 +69,57 @@ cd backend
 npm install
 ```
 
-Créer un fichier `.env` :
+Create a `.env` file:
 ```env
 DB_HOST=localhost
 DB_USER=postgres
 DB_NAME=opportunimap
-DB_PASSWORD=votre_mot_de_passe
+DB_PASSWORD=your_password
 DB_PORT=5432
-JWT_SECRET=une_longue_chaine_secrete
+JWT_SECRET=a_long_secret_string
 JWT_EXPIRES_IN=7d
 PORT=5000
 ```
 
 ```bash
-node seeds/seed-run.js   # remplit la base avec des données de démonstration
+node seeds/seed-run.js   # populates the database with demo data
 npm run dev
 ```
 
-Le frontend s'ouvre directement dans un navigateur (`frontend/pages/index.html`) et communique avec l'API sur `http://localhost:5000/api`.
+The frontend can be opened directly in a browser (`frontend/pages/index.html`) and communicates with the API at `http://localhost:5000/api`.
 
-## Endpoints principaux de l'API
+## Main API Endpoints
 
-| Méthode | Endpoint | Protégé ? |
+| Method | Endpoint | Protected? |
 |---|---|---|
-| POST | `/api/auth/register` | Non |
-| POST | `/api/auth/login` | Non |
-| GET | `/api/opportunities` | Non |
-| POST | `/api/opportunities` | Oui |
-| GET | `/api/favorites` | Oui |
-| GET | `/api/notifications` | Oui |
-| GET | `/api/dashboard` | Oui |
+| POST | `/api/auth/register` | No |
+| POST | `/api/auth/login` | No |
+| GET | `/api/opportunities` | No |
+| POST | `/api/opportunities` | Yes |
+| GET | `/api/favorites` | Yes |
+| GET | `/api/notifications` | Yes |
+| GET | `/api/dashboard` | Yes |
 
-## Choix de conception
+## Design Choices
 
-- **Données fictives** : la démonstration utilise des opportunités fictives, faute de partenariats réels établis à ce stade.
-- **Carte au niveau ville uniquement** : puisque les données sont fictives, la carte affiche la ville plutôt qu'une adresse précise inventée, pour rester honnête sur ce qui est réellement vérifiable.
-- **UUID plutôt qu'identifiants séquentiels** : empêche de deviner l'existence d'autres enregistrements dans la base.
+- **Mock Data**: The demo uses mock opportunities, due to the lack of real partnerships established at this stage.
+- **City-level Map Only**: Since the data is mock, the map displays the city rather than inventing a precise address, to remain honest about what is actually verifiable.
+- **UUIDs rather than Sequential IDs**: Prevents guessing the existence of other records in the database.
 
-![Détail d'une opportunité avec carte de localisation](../screenshots/detail.png)
+![Opportunity details with location map](screenshots/details.png)
 
-## Sécurité
+## Security
 
-- Mots de passe hashés avec `bcrypt`
-- Requêtes SQL paramétrées (prévention des injections SQL)
-- Authentification JWT pour toute action de création/modification/suppression
-- Vérification de propriété : seul le créateur peut modifier/supprimer son opportunité
+- Passwords hashed using `bcrypt`
+- Parameterized SQL queries (preventing SQL injections)
+- JWT Authentication for any create/update/delete action
+- Ownership verification: only the creator can modify/delete their opportunity
 
-## État actuel du projet
+## Current Project Status
 
-- **Backend** : complet et fonctionnel (authentification, opportunités, favoris, notifications, tableau de bord)
-- **Frontend** : accueil, liste/filtrage/carte des opportunités et publication terminés — inscription, connexion, favoris, notifications, tableau de bord et profil en cours
+- **Backend**: Complete and functional (authentication, opportunities, favorites, notifications, dashboard)
+- **Frontend**: Home, list/filtering/map of opportunities, and publishing completed — registration, login, favorites, notifications, dashboard, and profile in progress
 
-## Utilisation de l'IA
+## AI Usage
 
-Ce projet a été développé avec l'aide d'Antigravity, un éditeur de code intégrant des outils d'intelligence artificielle, utilisé pour structurer l'architecture backend, déboguer des erreurs, clarifier les bonnes pratiques de sécurité, et assister le développement du frontend. Les décisions de conception et l'implémentation finale ont été réalisées par Farida Garane, auteure du projet.
+This project was developed with the help of Antigravity, a code editor integrating artificial intelligence tools, used to structure the backend architecture, debug errors, clarify security best practices, and assist in frontend development. The design decisions and final implementation were carried out by Farida Garane, author of the project.
