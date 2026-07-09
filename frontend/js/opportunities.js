@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- FETCH & RENDER OPPORTUNITIES ---
   async function loadOpportunities() {
-    listContainer.innerHTML = '<p class="empty-state">Chargement des opportunités…</p>';
+    listContainer.innerHTML = '<p class="empty-state">Loading opportunities…</p>';
 
     const filters = {
       type: filterType.value,
@@ -57,13 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
       window.dispatchEvent(new CustomEvent('opportunitiesLoaded', { detail: opportunities }));
 
     } catch (error) {
-      listContainer.innerHTML = `<p class="empty-state" style="color: var(--color-error)">Erreur lors du chargement : ${error.message}</p>`;
+      listContainer.innerHTML = `<p class="empty-state" style="color: var(--color-error)">Loading error: ${error.message}</p>`;
     }
   }
 
   function renderOpportunities(opportunities) {
     if (!opportunities || opportunities.length === 0) {
-      listContainer.innerHTML = '<p class="empty-state">Aucune opportunité trouvée pour ces critères.</p>';
+      listContainer.innerHTML = '<p class="empty-state">No opportunities found for these criteria.</p>';
       return;
     }
 
@@ -77,18 +77,18 @@ document.addEventListener('DOMContentLoaded', () => {
         <span class="badge ${badgeClass}">${window.formatType(opp.type)}</span>
         <h3><a href="#" class="view-detail" data-id="${opp.id}">${opp.title}</a></h3>
         <p class="meta">
-          <i class="fa-solid fa-location-dot"></i> ${opp.city} 
+          <i class="fa-solid fa-location-dot"></i> ${window.formatCity(opp.city)} 
           &bull; 
           <i class="fa-solid fa-layer-group"></i> ${opp.field}
         </p>
         <p class="description">${opp.description}</p>
         <p class="deadline" style="color: var(--color-secondary); font-size: 0.85rem; margin-top: 10px;">
-          <i class="fa-regular fa-clock"></i> Date limite : ${window.formatDate(opp.deadline)}
+          <i class="fa-regular fa-clock"></i> Deadline: ${window.formatDate(opp.deadline)}
         </p>
         <div class="card-actions" style="margin-top: 16px; border-top: 1px solid var(--color-border); padding-top: 16px; display: flex; gap: 8px; align-items: center;">
-          <button type="button" class="btn btn-outline btn-sm view-detail" data-id="${opp.id}">Voir les détails</button>
+          <button type="button" class="btn btn-outline btn-sm view-detail" data-id="${opp.id}">View details</button>
           ${window.isAuthenticated() ? `
-          <button type="button" class="btn btn-secondary btn-sm add-favorite" data-id="${opp.id}" title="Ajouter aux favoris">
+          <button type="button" class="btn btn-secondary btn-sm add-favorite" data-id="${opp.id}" title="Add to favorites">
             <i class="fa-regular fa-bookmark"></i>
           </button>
           ` : ''}
@@ -119,10 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
           icon.className = 'fa-solid fa-bookmark';
           icon.style.color = 'var(--color-secondary)';
           e.currentTarget.disabled = true;
-          alert('Ajouté aux favoris !');
+          alert('Added to favorites!');
         } catch (error) {
           icon.className = 'fa-regular fa-bookmark';
-          alert(error.message || "Erreur lors de l'ajout aux favoris.");
+          alert(error.message || "Error adding to favorites.");
         }
       });
     });
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const submitBtn = addForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Publication...';
+      submitBtn.textContent = 'Publishing...';
       submitBtn.disabled = true;
 
       const data = {
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         await window.api.opportunities.create(data);
-        alert('Votre opportunité a été publiée avec succès !');
+        alert('Your opportunity has been successfully published!');
         addForm.reset();
         
         // Switch back to browse tab and reload

@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Basic geocoding dictionary for demo purposes
   // A real app would use coordinates from the database or a geocoding API
-  const cityCoords = {
+  window.cityCoords = {
     'ouagadougou': [12.3714, -1.5197],
     'bobo-dioulasso': [11.1771, -4.2979],
     'koudougou': [12.25, -2.3833],
@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'dedougou': [12.4667, -3.4667],
     'tenkodogo': [11.78, -0.3697],
     'fada ngourma': [12.0622, 0.3578],
+    'fada n\'gourma': [12.0622, 0.3578],
     'dori': [14.0354, -0.0345]
   };
 
@@ -68,11 +69,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const bounds = [];
 
+    // Helper to find the canonical city key from a string
+    function getCanonicalCityKey(cityName) {
+      const lower = cityName.toLowerCase().trim();
+      if (window.cityCoords[lower]) return lower;
+      for (const key of Object.keys(window.cityCoords)) {
+        if (lower.includes(key)) return key;
+      }
+      return lower;
+    }
+
+    // Group opportunities by city
+    const opsByCity = {};
     opportunities.forEach(opp => {
       if (!opp.city) return;
-      
-      const cityKey = opp.city.toLowerCase().trim();
-      let coords = cityCoords[cityKey];
+      const canonicalKey = getCanonicalCityKey(opp.city);
+      if (!opsByCity[canonicalKey]) {
+        opsByCity[canonicalKey] = {
+          // Keep the first encountered name, or capitalize the canonical key
+          city: canonicalKey.charAt(0).toUpperCase() + canonicalKey.slice(1),
+          opps: []
+        };
+      }
+      opsByCity[canonicalKey].opps.push(opp);
+    });
+
+    Object.keys(opsByCity).forEach(cityKey => {
+      const group = opsByCity[cityKey];
+      let coords = window.cityCoords[cityKey];
       
       // If city not found, add a bit of random offset to Ouagadougou center for display purposes
       if (!coords) {
@@ -82,21 +106,26 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
       }
 
-      // Add some random jitter if multiple items are in same city so markers don't overlap completely
-      const jitterLat = coords[0] + (Math.random() - 0.5) * 0.02;
-      const jitterLng = coords[1] + (Math.random() - 0.5) * 0.02;
-
-      const marker = L.marker([jitterLat, jitterLng], { icon: customIcon })
-        .bindPopup(`
-          <div class="map-popup">
-            <span class="badge badge-${opp.type}" style="font-size:0.65rem; padding: 2px 8px; margin-bottom: 6px; display:inline-block;">${window.formatType(opp.type)}</span>
-            <h3 style="margin: 0 0 6px 0; font-size: 1rem;"><a href="#" onclick="window.dispatchEvent(new CustomEvent('viewOpportunityDetail', { detail: '${opp.id}' })); return false;">${opp.title}</a></h3>
-            <p style="margin: 0; font-size: 0.85rem; color: #64748b;">${opp.field}</p>
+      // Create a popup listing all opportunities in this city
+      let popupHtml = `<div class="map-popup" style="max-height: 200px; overflow-y: auto;">
+        <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;">${group.city} <span style="font-size: 0.85rem; color: #64748b; font-weight: normal;">(${group.opps.length})</span></h3>`;
+      
+      group.opps.forEach(opp => {
+        popupHtml += `
+          <div style="margin-bottom: 12px;">
+            <span class="badge badge-${opp.type}" style="font-size:0.65rem; padding: 2px 8px; margin-bottom: 4px; display:inline-block;">${window.formatType(opp.type)}</span>
+            <h4 style="margin: 0 0 4px 0; font-size: 0.95rem;"><a href="#" onclick="window.dispatchEvent(new CustomEvent('viewOpportunityDetail', { detail: '${opp.id}' })); return false;">${opp.title}</a></h4>
+            <p style="margin: 0; font-size: 0.8rem; color: #64748b;">${opp.field}</p>
           </div>
-        `);
+        `;
+      });
+      popupHtml += `</div>`;
+
+      const marker = L.marker(coords, { icon: customIcon })
+        .bindPopup(popupHtml);
       
       markersLayer.addLayer(marker);
-      bounds.push([jitterLat, jitterLng]);
+      bounds.push(coords);
     });
 
     // Fit map bounds to show all markers if any exist

@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await window.api.auth.getProfile();
       const user = response.data || response.user || response; // Depends on your backend shape
       
-      if (profileName) profileName.textContent = user.name || 'Non renseigné';
-      if (profileEmail) profileEmail.textContent = user.email || 'Non renseigné';
-      if (profileCity) profileCity.textContent = user.city || 'Non renseignée';
-      if (profileField) profileField.textContent = user.field || 'Non renseigné';
+      if (profileName) profileName.textContent = user.name || 'Not provided';
+      if (profileEmail) profileEmail.textContent = user.email || 'Not provided';
+      if (profileCity) profileCity.textContent = user.city || 'Not provided';
+      if (profileField) profileField.textContent = user.field || 'Not provided';
       if (profileDate) {
-        profileDate.textContent = user.created_at || user.createdAt ? window.formatDate(user.created_at || user.createdAt) : 'Non disponible';
+        profileDate.textContent = user.created_at || user.createdAt ? window.formatDate(user.created_at || user.createdAt) : 'Not available';
       }
 
       // Also load their opportunities if the dashboard endpoint can be reused
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (error) {
       console.error(error);
-      if (profileName) profileName.textContent = 'Erreur de chargement';
+      if (profileName) profileName.textContent = 'Loading error';
     }
   }
 
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!myOpportunities) return;
     
     if (!opportunities || opportunities.length === 0) {
-      myOpportunities.innerHTML = '<p class="empty-state">Vous n\'avez publié aucune opportunité.</p>';
+      myOpportunities.innerHTML = '<p class="empty-state">You have not published any opportunities.</p>';
       return;
     }
 
@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <span class="badge ${badgeClass}">${window.formatType(opp.type)}</span>
         <h3><a href="opportunities.html?id=${opp.id || opp._id}">${opp.title}</a></h3>
         <p class="meta">
-          <i class="fa-solid fa-location-dot"></i> ${opp.city || 'Non spécifié'}
+          <i class="fa-solid fa-location-dot"></i> ${opp.city || 'Not specified'}
         </p>
         <p class="deadline" style="color: var(--color-secondary); font-size: 0.85rem; margin-top: 10px;">
-          <i class="fa-regular fa-clock"></i> Date limite : ${opp.deadline ? window.formatDate(opp.deadline) : 'Non spécifiée'}
+          <i class="fa-regular fa-clock"></i> Deadline: ${opp.deadline ? window.formatDate(opp.deadline) : 'Not specified'}
         </p>
       `;
       myOpportunities.appendChild(card);
@@ -73,4 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   loadProfile();
+
+  // Handle Edit Profile button click (Demo behavior)
+  const editBtn = document.getElementById('btn-edit-profile');
+  if (editBtn) {
+    editBtn.addEventListener('click', () => {
+      alert("Profile modification is not yet available in this demo version.");
+    });
+  }
 });

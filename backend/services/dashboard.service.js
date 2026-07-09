@@ -21,7 +21,16 @@ const dashboardService = {
         );
 
         const myOpportunities = await pool.query(
-            'SELECT * FROM opportunities WHERE created_by = $1 ORDER BY created_at DESC',
+            'SELECT *, \'published\' as activity_type FROM opportunities WHERE created_by = $1 ORDER BY created_at DESC',
+            [userId]
+        );
+
+        const myFavorites = await pool.query(
+            `SELECT o.*, f.created_at as favorited_at, \'favorited\' as activity_type 
+             FROM favorites f
+             JOIN opportunities o ON f.opportunity_id = o.id
+             WHERE f.user_id = $1 
+             ORDER BY f.created_at DESC`,
             [userId]
         );
 
@@ -30,6 +39,7 @@ const dashboardService = {
             myOpportunitiesCount: parseInt(myOpportunitiesCount.rows[0].count, 10),
             unreadNotificationsCount: parseInt(unreadNotificationsCount.rows[0].count, 10),
             myOpportunities: myOpportunities.rows,
+            myFavorites: myFavorites.rows
         };
     },
 

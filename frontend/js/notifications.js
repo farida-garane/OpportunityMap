@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (error) {
       console.error(error);
-      listContainer.innerHTML = `<p style="color: var(--color-error); text-align: center;">Erreur lors du chargement des notifications.</p>`;
+      listContainer.innerHTML = `<p style="color: var(--color-error); text-align: center;">Error loading notifications.</p>`;
     }
   }
 
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.remove('unread');
             item.style.cursor = 'default';
           } catch (err) {
-            console.error('Impossible de marquer comme lu', err);
+            console.error('Unable to mark as read', err);
           }
         });
       }
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.notification-item.unread').forEach(item => {
         item.classList.remove('unread');
       });
-      alert('Toutes les notifications ont été marquées comme lues.');
+      alert('All notifications have been marked as read.');
     });
   }
 

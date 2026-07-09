@@ -1,149 +1,125 @@
-# OpportuniMap — Backend
+# 🗺️ OpportuniMap
 
-OpportuniMap is a web platform that centralizes professional opportunities (internships, competitions, trainings, and events) for students in Burkina Faso, addressing unequal access to information between major cities and other regions.
+**Centraliser les opportunités professionnelles au Burkina Faso — pour un accès équitable à l'information.**
 
-Built for the "Global Challenges, Local Solutions" hackathon.
+Projet soumis pour le hackathon *"Défis mondiaux, solutions locales"* sur Devpost.
 
-## Tech Stack
+---
 
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Database**: PostgreSQL
-- **Authentication**: JWT (JSON Web Tokens) + bcrypt
-- **Dev tool**: nodemon
+## Le problème
 
-## Project Structure
+Au Burkina Faso, l'accès aux opportunités professionnelles (stages, concours, formations, événements) est inégal :
+
+- Les opportunités sont concentrées dans les grandes villes, surtout Ouagadougou
+- L'information circule surtout par bouche-à-oreille, WhatsApp ou Facebook
+- Les étudiants des autres régions sont désavantagés, non par manque de mérite, mais par manque d'accès à l'information
+- Il n'existe pas de plateforme unique qui centralise ces opportunités
+
+## La solution
+
+**OpportuniMap** centralise, organise et diffuse les opportunités professionnelles et éducatives en un seul endroit, avec filtrage et géolocalisation, pour un accès à l'information plus équitable dans tout le pays.
+
+![Page d'accueil](../screenshots/home.png)
+
+## Fonctionnalités
+
+| Fonctionnalité | Description |
+|---|---|
+| Centralisation | Stages, concours, formations, événements regroupés en un seul endroit |
+| Filtrage intelligent | Recherche par type, domaine, ville |
+| Carte interactive | Vue d'ensemble par ville + localisation par opportunité |
+| Recommandations personnalisées | Mise en avant selon le domaine/ville du profil utilisateur |
+| Notifications | Alertes pour les nouvelles opportunités |
+| Ajout d'opportunités | Publication communautaire par les utilisateurs |
+| Favoris | Sauvegarde pour postuler plus tard |
+| Tableau de bord | Résumé personnel : favoris, publications, notifications |
+
+![Liste des opportunités avec filtres](../screenshots/opportunities.png)
+
+![Carte des opportunités par ville](../screenshots/map.png)
+
+## Stack technique
+
+**Backend** : Node.js, Express, PostgreSQL, JWT + bcrypt
+**Frontend** : HTML / CSS / JavaScript, Leaflet + OpenStreetMap pour la carte
+
+## Architecture
 
 ```
-backend/
-├── config/
-│   └── db.js                  # PostgreSQL connection (pool)
-├── models/                    # Table declarations (name + columns)
-│   ├── User.js
-│   ├── Opportunity.js
-│   ├── Favorite.js
-│   └── Notification.js
-├── controllers/                # Handle HTTP requests/responses
-│   ├── auth.controller.js
-│   ├── opportunity.controller.js
-│   ├── favorite.controller.js
-│   ├── notification.controller.js
-│   └── dashboard.controller.js
-├── services/                  # Business logic + SQL queries
-│   ├── auth.service.js
-│   ├── opportunity.service.js
-│   ├── favorite.service.js
-│   ├── notification.service.js
-│   └── dashboard.service.js
-├── routes/                     # API endpoints
-│   ├── auth.routes.js
-│   ├── opportunity.routes.js
-│   ├── favorite.routes.js
-│   ├── notification.routes.js
-│   └── dashboard.routes.js
-├── middleware/
-│   ├── auth.middleware.js      # Verifies JWT tokens on protected routes
-│   └── error.middleware.js     # Global error handler
-├── seeds/
-│   ├── seed-data.js            # Fictional sample opportunities
-│   └── seed-run.js             # Inserts sample data into the database
-├── database/
-│   └── create_database.sql     # Table creation script (run manually in PostgreSQL)
-├── .env                        # Environment variables (not committed)
-├── .gitignore
-├── package.json
-└── server.js                   # Entry point
+OpportunityMap/
+├── backend/
+│   ├── config/        # Connexion PostgreSQL
+│   ├── models/        # Déclaration des tables
+│   ├── controllers/    # Requêtes/réponses HTTP
+│   ├── services/       # Logique métier + requêtes SQL
+│   ├── routes/         # Endpoints de l'API
+│   ├── middleware/     # Vérification JWT + erreurs
+│   ├── seeds/           # Données de démonstration
+│   └── server.js
+└── frontend/
+    ├── pages/
+    ├── css/
+    └── js/
 ```
 
-## Features
-
-1. Centralized opportunities (internships, competitions, trainings, events)
-2. Smart filtering (type, field, city)
-3. Map / geolocation
-4. Personalized recommendations (based on user's field/city)
-5. Notifications
-6. Add opportunities (community-submitted)
-7. Favorites
-8. User dashboard (saved opportunities, published opportunities, notifications summary)
-
-## Setup Instructions
-
-### 1. Install dependencies
+## Installation
 
 ```bash
+cd backend
 npm install
 ```
 
-### 2. Configure environment variables
-
-Create a `.env` file in `backend/` with the following:
-
+Créer un fichier `.env` :
 ```env
 DB_HOST=localhost
 DB_USER=postgres
 DB_NAME=opportunimap
-DB_PASSWORD=your_postgresql_password
+DB_PASSWORD=votre_mot_de_passe
 DB_PORT=5432
-
-JWT_SECRET=your_long_random_secret
+JWT_SECRET=une_longue_chaine_secrete
 JWT_EXPIRES_IN=7d
-
 PORT=5000
 ```
 
-### 3. Create the database and tables
-
-Open PostgreSQL (pgAdmin or terminal) and run the script in `database/create_database.sql`. This creates the `opportunimap` database, enables the `pgcrypto` extension (needed for UUID generation), and creates the 4 tables: `users`, `opportunities`, `favorites`, `notifications`.
-
-### 4. Seed the database with sample data
-
 ```bash
-node seeds/seed-run.js
-```
-
-This inserts 20 fictional opportunities so the app has data to display during testing/demo.
-
-### 5. Start the server
-
-```bash
+node seeds/seed-run.js   # remplit la base avec des données de démonstration
 npm run dev
 ```
 
-The server starts on `http://localhost:5000` (or the port set in `.env`).
+Le frontend s'ouvre directement dans un navigateur (`frontend/pages/index.html`) et communique avec l'API sur `http://localhost:5000/api`.
 
-## API Endpoints Overview
+## Endpoints principaux de l'API
 
-| Method | Endpoint | Protected? | Description |
-|---|---|---|---|
-| POST | `/api/auth/register` | No | Create a new account |
-| POST | `/api/auth/login` | No | Log in, returns a JWT token |
-| GET | `/api/auth/profile` | Yes | Get logged-in user's profile |
-| GET | `/api/opportunities` | No | List opportunities (supports `?type=&field=&city=` filters) |
-| GET | `/api/opportunities/:id` | No | Get a single opportunity |
-| POST | `/api/opportunities` | Yes | Create a new opportunity |
-| PUT | `/api/opportunities/:id` | Yes | Update an opportunity (owner only) |
-| DELETE | `/api/opportunities/:id` | Yes | Delete an opportunity (owner only) |
-| GET | `/api/favorites` | Yes | List the logged-in user's favorites |
-| POST | `/api/favorites/:opportunityId` | Yes | Add an opportunity to favorites |
-| DELETE | `/api/favorites/:opportunityId` | Yes | Remove an opportunity from favorites |
-| GET | `/api/notifications` | Yes | List the logged-in user's notifications |
-| PUT | `/api/notifications/:id/read` | Yes | Mark a notification as read |
-| GET | `/api/dashboard` | Yes | Get user summary (favorites count, published opportunities, unread notifications) |
+| Méthode | Endpoint | Protégé ? |
+|---|---|---|
+| POST | `/api/auth/register` | Non |
+| POST | `/api/auth/login` | Non |
+| GET | `/api/opportunities` | Non |
+| POST | `/api/opportunities` | Oui |
+| GET | `/api/favorites` | Oui |
+| GET | `/api/notifications` | Oui |
+| GET | `/api/dashboard` | Oui |
 
-Protected routes require an `Authorization: Bearer <token>` header, using the token returned by `/api/auth/login`.
+## Choix de conception
 
-## Security Notes
+- **Données fictives** : la démonstration utilise des opportunités fictives, faute de partenariats réels établis à ce stade.
+- **Carte au niveau ville uniquement** : puisque les données sont fictives, la carte affiche la ville plutôt qu'une adresse précise inventée, pour rester honnête sur ce qui est réellement vérifiable.
+- **UUID plutôt qu'identifiants séquentiels** : empêche de deviner l'existence d'autres enregistrements dans la base.
 
-- Passwords are hashed with `bcrypt` before being stored — never stored in plain text.
-- Primary keys use `UUID` (instead of sequential IDs) to prevent guessing/enumeration of records.
-- All SQL queries use parameterized statements (`$1`, `$2`...) to prevent SQL injection.
-- JWT tokens are required for any action that creates, modifies, or deletes data.
+![Détail d'une opportunité avec carte de localisation](../screenshots/detail.png)
 
-## Status
+## Sécurité
 
-Backend: functional (routes, controllers, services, models, middleware, database, seed data).
-Frontend: not yet started.
+- Mots de passe hashés avec `bcrypt`
+- Requêtes SQL paramétrées (prévention des injections SQL)
+- Authentification JWT pour toute action de création/modification/suppression
+- Vérification de propriété : seul le créateur peut modifier/supprimer son opportunité
 
-## AI Usage Disclosure
+## État actuel du projet
 
-This project was developed with the assistance of Claude (Anthropic) for: structuring the backend architecture (routes/controllers/services/models), debugging PostgreSQL and Node.js errors, and clarifying security best practices (JWT, bcrypt, UUIDs, parameterized queries). All final code, architectural decisions, and implementation choices were made by the project author.
+- **Backend** : complet et fonctionnel (authentification, opportunités, favoris, notifications, tableau de bord)
+- **Frontend** : accueil, liste/filtrage/carte des opportunités et publication terminés — inscription, connexion, favoris, notifications, tableau de bord et profil en cours
+
+## Utilisation de l'IA
+
+Ce projet a été développé avec l'aide d'Antigravity, un éditeur de code intégrant des outils d'intelligence artificielle, utilisé pour structurer l'architecture backend, déboguer des erreurs, clarifier les bonnes pratiques de sécurité, et assister le développement du frontend. Les décisions de conception et l'implémentation finale ont été réalisées par Farida Garane, auteure du projet.

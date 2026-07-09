@@ -9,12 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const loginError = document.getElementById('login-error');
   const registerError = document.getElementById('register-error');
 
-  // If already logged in, redirect to dashboard
-  if (window.isAuthenticated()) {
-    window.location.href = 'index.html';
-    return;
-  }
-
   // --- LOGIN LOGIC ---
   if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
@@ -30,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const submitBtn = loginForm.querySelector('button[type="submit"]');
 
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Connexion...';
+      submitBtn.textContent = 'Logging in...';
       submitBtn.disabled = true;
 
       try {
@@ -39,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
       } catch (error) {
         if (loginError) {
-          loginError.textContent = error.message || 'Email ou mot de passe incorrect.';
+          loginError.textContent = error.message || 'Incorrect email or password.';
           loginError.classList.remove('hidden');
         }
       } finally {
@@ -69,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const submitBtn = registerForm.querySelector('button[type="submit"]');
 
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Création du compte...';
+      submitBtn.textContent = 'Creating account...';
       submitBtn.disabled = true;
 
       try {
@@ -79,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
       } catch (error) {
         if (registerError) {
-          registerError.textContent = error.message || 'Une erreur est survenue lors de l\'inscription.';
+          registerError.textContent = error.message || 'An error occurred during registration.';
           registerError.classList.remove('hidden');
         }
       } finally {

@@ -22,6 +22,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Verify token is still valid by fetching profile silently
     try {
       await window.api.auth.getProfile();
+      
+      // Mettre à jour les badges du menu
+      const summaryRes = await window.api.dashboard.getSummary();
+      const summary = summaryRes.data || summaryRes;
+      
+      // Le badge "Tableau de bord" peut représenter le total des opportunités publiées
+      const dashboardLinks = document.querySelectorAll('a[href="dashboard.html"] .menu-badge');
+      dashboardLinks.forEach(badge => badge.textContent = summary.myOpportunitiesCount || 0);
+      
+      // Le badge "Favoris"
+      const favLinks = document.querySelectorAll('a[href="favorites.html"] .menu-badge');
+      favLinks.forEach(badge => badge.textContent = summary.favoritesCount || 0);
+
+      // Si vous avez un badge de notifications
+      const notifLinks = document.querySelectorAll('a[href="notifications.html"] .menu-badge');
+      notifLinks.forEach(badge => badge.textContent = summary.unreadNotificationsCount || 0);
+
     } catch (err) {
       // If token is invalid/expired, log out automatically
       console.warn("Session expirée ou invalide.");
@@ -58,23 +75,32 @@ document.addEventListener('DOMContentLoaded', async () => {
  * Utility function to format dates
  */
 window.formatDate = (dateString) => {
-  if (!dateString) return 'Non spécifiée';
+  if (!dateString) return 'Not specified';
   const date = new Date(dateString);
-  if (isNaN(date.getTime())) return 'Date invalide';
+  if (isNaN(date.getTime())) return 'Invalid date';
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('fr-FR', options);
+  return date.toLocaleDateString('en-US', options);
 };
 
 /**
  * Utility function to get human-readable opportunity type
  */
 window.formatType = (type) => {
-  if (!type) return 'Autre';
+  if (!type) return 'Other';
   const types = {
-    internship: 'Stage',
-    competition: 'Concours',
-    training: 'Formation',
-    event: 'Événement'
+    internship: 'Internship',
+    competition: 'Competition',
+    training: 'Training',
+    event: 'Event'
   };
   return types[type] || type;
+};
+
+/**
+ * Utility function to format city (strip neighborhood info for demo)
+ */
+window.formatCity = (cityString) => {
+  if (!cityString) return 'Unknown';
+  // Extracts "Ouagadougou" from "Ouagadougou - Dassasgho"
+  return cityString.split('-')[0].trim();
 };

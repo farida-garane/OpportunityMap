@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tableau de bord — OpportuniMap</title>
+  <title>Dashboard — OpportunityMap</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -14,50 +14,49 @@
     <aside class="dashboard-sidebar">
       <div class="sidebar-header">
         <a href="index.html" class="sidebar-logo">
-          <i class="fa-solid fa-map-location-dot"></i> OpportuniMap
+          <i class="fa-solid fa-map-location-dot"></i> OpportunityMap
         </a>
       </div>
       <ul class="sidebar-menu">
-        <li><a href="dashboard.html" class="active"><i class="fa-solid fa-border-all"></i> Tableau de bord <span class="menu-badge">2</span></a></li>
-        <li><a href="opportunities.html"><i class="fa-solid fa-briefcase"></i> Opportunités</a></li>
-        <li><a href="add-opportunity.html"><i class="fa-solid fa-plus-circle"></i> Ajouter</a></li>
-        <li><a href="favorites.html"><i class="fa-solid fa-heart"></i> Favoris <span class="menu-badge">3</span></a></li>
+        <li><a href="dashboard.html" class="active"><i class="fa-solid fa-border-all"></i> Dashboard <span class="menu-badge">2</span></a></li>
+        <li><a href="opportunities.html"><i class="fa-solid fa-briefcase"></i> Opportunities</a></li>
+        <li><a href="add-opportunity.html"><i class="fa-solid fa-plus-circle"></i> Add</a></li>
+        <li><a href="favorites.html"><i class="fa-solid fa-heart"></i> Favorites <span class="menu-badge">3</span></a></li>
         <li><a href="notifications.html"><i class="fa-solid fa-bell"></i> Notifications</a></li>
-        <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
-        <li style="margin-top: 20px;"><a href="#" id="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion</a></li>
+        <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a></li>
+        <li style="margin-top: 20px;"><a href="#" id="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
       </ul>
     </aside>
 
     <!-- Main Content -->
     <main class="dashboard-main">
       <div class="breadcrumb">
-        <a href="index.html">Accueil</a> &gt; <span>Tableau de bord</span>
+        <a href="index.html">Home</a> &gt; <span>Dashboard</span>
       </div>
 
       <div class="main-header">
-        <h1>Opportunités</h1>
+        <h1>My Dashboard</h1>
         <div class="header-actions">
-          <button class="btn-secondary"><i class="fa-solid fa-download"></i> Télécharger CSV</button>
-          <a href="add-opportunity.html" class="btn-primary theme"><i class="fa-solid fa-plus"></i> Ajouter une Opportunité</a>
+          <a href="add-opportunity.html" class="btn-primary theme"><i class="fa-solid fa-plus"></i> Add Opportunity</a>
         </div>
       </div>
 
       <!-- Tabs -->
       <div class="tabs">
-        <div class="tab active theme">Approuvées <span class="tab-count">0</span></div>
-        <div class="tab">En attente <span class="tab-count">0</span></div>
-        <div class="tab">Expirées/Annulées <span class="tab-count">0</span></div>
+        <div class="tab active theme">Approved <span class="tab-count">0</span></div>
+        <div class="tab">Pending <span class="tab-count">0</span></div>
+        <div class="tab">Expired/Cancelled <span class="tab-count">0</span></div>
       </div>
 
       <!-- Toolbar -->
       <div class="toolbar">
         <div class="search-box">
           <i class="fa-solid fa-search" style="color:#5f6368"></i>
-          <input type="text" placeholder="Rechercher par titre ou entreprise">
+          <input type="text" placeholder="Search by title or company">
         </div>
         <div class="filter-sort">
-          <div class="filter-btn"><i class="fa-solid fa-filter"></i> Filtrer</div>
-          <div class="filter-btn"><i class="fa-solid fa-arrow-down-a-z"></i> Trier</div>
+          <div class="filter-btn"><i class="fa-solid fa-filter"></i> Filter</div>
+          <div class="filter-btn"><i class="fa-solid fa-arrow-down-a-z"></i> Sort</div>
         </div>
       </div>
 
@@ -66,16 +65,15 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Opportunité</th>
-            <th>Contact / Admin</th>
-            <th>Date d'ajout</th>
-            <th>Type / Domaine</th>
-            <th>Statut</th>
+            <th>Opportunity</th>
+            <th>Action (Status)</th>
+            <th>Date</th>
+            <th>Type / Field</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <!-- Les opportunités apparaîtront ici -->
+          <!-- Opportunities will appear here -->
         </tbody>
       </table>
 

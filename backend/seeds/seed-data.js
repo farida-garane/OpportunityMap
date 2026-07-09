@@ -2,9 +2,9 @@ const opportunities = [
 
     // ===== INTERNSHIPS =====
     {
-        title: "Web Developer Internship",
+        title: "Full-Stack Development Internship (MERN)",
         type: "internship",
-        description: "3-month internship building web applications with a local fintech startup.",
+        description: "Join our technical team for a 3-month internship. You will contribute to the development of our SaaS platform for financial management of SMEs in Burkina Faso. Main tasks: API design with Node.js, front-end integration with React.js, and MongoDB database optimization. Technical mentoring will be provided by a senior developer. Requirements: solid JavaScript fundamentals, curiosity, and teamwork spirit.",
         field: "Computer Science",
         city: "Ouagadougou - Zone du Bois",
         latitude: 12.3714,
@@ -13,9 +13,9 @@ const opportunities = [
         link: "https://example.com/internship-1",
     },
     {
-        title: "Data Analysis Internship",
+        title: "Applied Data Science Internship",
         type: "internship",
-        description: "Internship analyzing real transaction datasets in a fintech company.",
+        description: "A 4-month hands-on internship within a fintech startup. You will work on real transaction datasets to identify fraud patterns and optimize our credit scoring algorithms. Technologies used: Python, Pandas, Scikit-learn, and SQL. This internship is aimed at master's students in data science or statistics who want to make a direct impact on a product used by thousands of people.",
         field: "Computer Science",
         city: "Koudougou",
         latitude: 12.2529,
@@ -24,9 +24,9 @@ const opportunities = [
         link: "https://example.com/internship-2",
     },
     {
-        title: "Mobile App Development Internship",
+        title: "Mobile Developer Internship (Flutter)",
         type: "internship",
-        description: "Internship building a mobile app for a local NGO.",
+        description: "We are looking for a motivated intern to contribute to a public health mobile app for a local NGO. The app will track vaccination campaigns in rural areas. You will work on Flutter front-end development and REST API integration. Prior experience (even academic) with Flutter or Dart is a strong plus. Paid internship with possibility of employment.",
         field: "Computer Science",
         city: "Ouagadougou - Gounghin",
         latitude: 12.3714,
@@ -35,9 +35,9 @@ const opportunities = [
         link: "https://example.com/internship-3",
     },
     {
-        title: "Marketing Assistant Internship",
+        title: "Web Marketing Assistant Internship",
         type: "internship",
-        description: "Internship supporting digital marketing campaigns for an e-commerce company.",
+        description: "Join a dynamic team for a 6-month internship focused on digital marketing. You will help design and run advertising campaigns on Facebook Ads and Google Ads for a fast-growing e-commerce platform. Your tasks will include content writing, creating simple visuals (Canva), and analyzing KPIs (conversion rate, cost per click). Ideal for a creative and analytical profile.",
         field: "Marketing",
         city: "Bobo-Dioulasso",
         latitude: 11.1771,
@@ -46,9 +46,9 @@ const opportunities = [
         link: "https://example.com/internship-4",
     },
     {
-        title: "Project Management Internship (NGO)",
+        title: "Assistant Project Manager Internship (NGO)",
         type: "internship",
-        description: "Support project coordination for a local development NGO.",
+        description: "A unique opportunity for a project management student to join an international NGO working in education. You will assist the project manager with activity planning, budget tracking, and report writing for donors. You will also help organize training workshops. Strong writing skills in French required.",
         field: "Project Management",
         city: "Ouagadougou - Tanghin",
         latitude: 12.3714,
@@ -59,9 +59,9 @@ const opportunities = [
 
     // ===== COMPETITIONS =====
     {
-        title: "National Innovation Competition",
+        title: "National Social Innovation Hackathon",
         type: "competition",
-        description: "A national contest for young entrepreneurs to pitch tech-based solutions.",
+        description: "Take part in the country's largest competition for young entrepreneurs. Form a team of 2 to 4 people and develop a technological solution addressing a major social challenge (education, health, environment). Winners will receive seed funding of 5,000,000 FCFA, 6 months of free incubation, and mentorship from expert advisors. Submit your application before the deadline.",
         field: "Entrepreneurship",
         city: "Bobo-Dioulasso",
         latitude: 11.1771,
@@ -70,9 +70,9 @@ const opportunities = [
         link: "https://example.com/competition-1",
     },
     {
-        title: "Agribusiness Innovation Challenge",
+        title: "AgriTech Challenge 2026",
         type: "competition",
-        description: "A competition for solutions improving agricultural supply chains.",
+        description: "A competition dedicated to innovative solutions for modernizing local agriculture. We are looking for projects using IoT sensors, data analysis, or mobile applications to improve crop yields or optimize the supply chain. Open to students, researchers, and startups under one year old. Present a working prototype at the grand finale in front of a panel of agribusiness investors.",
         field: "Agriculture",
         city: "Bobo-Dioulasso",
         latitude: 11.1771,
@@ -81,9 +81,9 @@ const opportunities = [
         link: "https://example.com/competition-2",
     },
     {
-        title: "Inter-University Hackathon",
+        title: "Inter-University Hackathon: Smart City",
         type: "competition",
-        description: "48-hour hackathon bringing together students from universities nationwide.",
+        description: "48 hours of non-stop coding! Come take on the challenge of creating software solutions to improve urban management (transportation, waste, energy) in our cities. The event brings together passionate computer science students from universities across the country. Accommodation, food, and high-speed internet provided on site. Many prizes to win, including laptops and internship opportunities.",
         field: "Computer Science",
         city: "Ouagadougou - Ouaga 2000",
         latitude: 12.3714,
@@ -92,9 +92,9 @@ const opportunities = [
         link: "https://example.com/competition-3",
     },
     {
-        title: "National Cybersecurity Challenge",
+        title: "National Cybersecurity Competition (CTF)",
         type: "competition",
-        description: "A student competition focused on cybersecurity and ethical hacking skills.",
+        description: "Test your information security skills in this nationwide Capture The Flag (CTF) challenge. Categories include cryptography, reverse engineering, web exploitation, and forensic analysis. Individual or team competition. Whether you're a curious beginner or a seasoned ethical hacker, this competition is a unique chance to get noticed by specialized IT recruiters.",
         field: "Computer Science",
         city: "Ouagadougou - Patte d'Oie",
         latitude: 12.3714,
@@ -105,9 +105,9 @@ const opportunities = [
 
     // ===== TRAININGS =====
     {
-        title: "Digital Marketing Training",
+        title: "Certified Digital Marketing Training",
         type: "training",
-        description: "Free 2-week training on digital marketing fundamentals for students.",
+        description: "Take advantage of this intensive, completely free 2-week training to master online acquisition channels. Program includes: content strategy creation, SEO (search engine optimization), advertising campaign management (Facebook/Google Ads), and data analysis with Google Analytics. Limited to 30 participants. A certificate will be awarded upon passing the final exam.",
         field: "Marketing",
         city: "Ouagadougou - Dassasgho",
         latitude: 12.3714,
@@ -116,9 +116,9 @@ const opportunities = [
         link: "https://example.com/training-1",
     },
     {
-        title: "Public Speaking Workshop",
+        title: "Public Speaking Practical Workshop",
         type: "training",
-        description: "One-day workshop to build confidence in public speaking and presentations.",
+        description: "A one-day immersive workshop to overcome shyness and build public speaking confidence. This interactive workshop, led by expert communication coaches, will teach you speech structuring techniques, stress management, body language, and audience interaction. Ideal for preparing for thesis defenses, job interviews, or project presentations. Practical exercises filmed with debriefing.",
         field: "Communication",
         city: "Ouahigouya",
         latitude: 13.5828,
@@ -127,9 +127,9 @@ const opportunities = [
         link: "https://example.com/training-2",
     },
     {
-        title: "Youth Leadership Training",
+        title: "Youth Leadership Program",
         type: "training",
-        description: "A training program to develop leadership skills among young students.",
+        description: "A training program spread over 3 weekends to reveal the leader within you. This program covers personal development, emotional intelligence, conflict resolution, and team dynamics. Through case studies and role-playing, you will learn to mobilize and inspire others to successfully carry out collective projects. A major asset for your future professional and community life.",
         field: "Personal Development",
         city: "Fada N'Gourma",
         latitude: 12.0616,
@@ -138,9 +138,9 @@ const opportunities = [
         link: "https://example.com/training-3",
     },
     {
-        title: "Web Development Bootcamp",
+        title: "Intensive Web Development Bootcamp (MERN)",
         type: "training",
-        description: "Intensive 3-week certifying bootcamp covering HTML, CSS, JavaScript and Node.js.",
+        description: "Go from beginner to junior developer capable of building complete web applications in just 3 weeks of full immersion. This project-based bootcamp covers the fundamentals: HTML5, CSS3, modern JavaScript, as well as an in-depth introduction to the MERN stack (MongoDB, Express, React, Node.js). You will work in a team on a final project to enrich your portfolio. Personal laptop required.",
         field: "Computer Science",
         city: "Ouagadougou - Cissin",
         latitude: 12.3714,
@@ -149,9 +149,9 @@ const opportunities = [
         link: "https://example.com/training-4",
     },
     {
-        title: "Personal Finance Workshop",
+        title: "Financial Literacy Masterclass for Students",
         type: "training",
-        description: "Practical workshop on budgeting and financial planning for young adults.",
+        description: "Learn to manage your money and plan your financial future. This practical 4-hour workshop covers building a personal budget, managing everyday expenses, the importance of saving, and an introduction to basic investing. Led by professional financial advisors, this training will give you concrete tools to develop good financial habits from the start of your working life.",
         field: "Finance",
         city: "Koudougou",
         latitude: 12.2529,
@@ -162,9 +162,9 @@ const opportunities = [
 
     // ===== EVENTS =====
     {
-        title: "Tech Career Fair",
+        title: "Tech Jobs and Careers Fair",
         type: "event",
-        description: "Annual career fair connecting students with tech employers across the country.",
+        description: "The must-attend event of the year for everyone passionate about IT and digital technology! Meet more than 50 companies (startups, banks, IT firms, telecoms) actively hiring. Program includes: company booths, speed job-dating sessions, conferences on future professions, and CV review workshops. Remember to bring several copies of your CV and prepare your elevator pitch.",
         field: "Computer Science",
         city: "Ouagadougou - Ouaga 2000",
         latitude: 12.3714,
@@ -173,9 +173,9 @@ const opportunities = [
         link: "https://example.com/event-1",
     },
     {
-        title: "Renewable Energy Forum",
+        title: "International Renewable Energy Forum",
         type: "event",
-        description: "A forum bringing together students and professionals in renewable energy.",
+        description: "Take part in 2 days of discussions and debates on the energy transition in West Africa. This forum brings together international experts, policy makers, solar energy companies, and researchers. Discover the latest technological innovations, financing challenges, and career opportunities in the green economy sector. Free entry for students upon presentation of student ID.",
         field: "Engineering",
         city: "Ouagadougou - Zogona",
         latitude: 12.3714,
@@ -184,9 +184,9 @@ const opportunities = [
         link: "https://example.com/event-2",
     },
     {
-        title: "Entrepreneurship Conference",
+        title: "Youth Entrepreneurship Summit",
         type: "event",
-        description: "Conference on entrepreneurship trends and opportunities in West Africa.",
+        description: "An inspiring summit designed to energize the local entrepreneurial ecosystem. Come hear testimonials from young founders of successful startups, and take part in panel discussions on fundraising and business resilience. Structured networking sessions will let you meet potential co-founders, angel investors, and mentors. A must-attend event to boost your network.",
         field: "Entrepreneurship",
         city: "Bobo-Dioulasso",
         latitude: 11.1771,
@@ -195,9 +195,9 @@ const opportunities = [
         link: "https://example.com/event-3",
     },
     {
-        title: "University Open Day",
+        title: "Open House Day - Institute of Higher Technology",
         type: "event",
-        description: "Open house event where a local university presents its programs to prospective students.",
+        description: "Future high school graduates and students considering a change of direction, come discover our campus during this open house day. You will be able to tour our labs, watch student project demonstrations (robotics, networking, design), and speak directly with faculty and alumni. Guidance counselors will be on site to help you choose the program that fits your career plans.",
         field: "Education",
         city: "Ouagadougou - Kilwin",
         latitude: 12.3714,
@@ -206,9 +206,9 @@ const opportunities = [
         link: "https://example.com/event-4",
     },
     {
-        title: "Student-Professional Networking Night",
+        title: "Afterwork: Students & Digital Professionals",
         type: "event",
-        description: "Informal evening event connecting students with professionals in tech and business.",
+        description: "Grow your professional network in a relaxed atmosphere! This monthly afterwork brings together the local tech community: developers, designers, project managers, and students. It's the perfect opportunity to discuss the latest tech trends, share experiences, and who knows, find your next internship or job in an informal way. Free drinks for the first 50 attendees.",
         field: "Networking",
         city: "Ouagadougou - Somgandé",
         latitude: 12.3714,
@@ -217,9 +217,9 @@ const opportunities = [
         link: "https://example.com/event-5",
     },
     {
-        title: "National Excellence Awards Ceremony",
+        title: "National Student Excellence Ceremony",
         type: "event",
-        description: "Award ceremony recognizing top-performing students across the country.",
+        description: "Be present at this prestigious gala evening celebrating academic excellence in our country. This event will honor top-ranked students from all university programs, as well as the most promising research projects. In the presence of academic and government figures, this ceremony celebrates the effort, discipline, and talent of youth. By invitation or prior registration.",
         field: "Education",
         city: "Ouagadougou - Ouaga 2000",
         latitude: 12.3714,

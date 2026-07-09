@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Publier une opportunité — OpportuniMap</title>
+  <title>Publish an opportunity — OpportunityMap</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -11,18 +11,18 @@
 
   <header class="navbar">
     <div class="container">
-      <a href="index.html" class="navbar-brand"><i class="fa-solid fa-map-location-dot"></i> Opportuni<span>Map</span></a>
+      <a href="index.html" class="navbar-brand"><i class="fa-solid fa-map-location-dot"></i> Opportunity<span>Map</span></a>
       <nav class="navbar-nav">
         <ul class="navbar-links">
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="opportunities.html">Opportunités</a></li>
-          <li><a href="favorites.html">Favoris</a></li>
-          <li><a href="dashboard.html">Tableau de bord</a></li>
-          <li><a href="profile.html">Profil</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="opportunities.html">Opportunities</a></li>
+          <li><a href="favorites.html">Favorites</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="profile.html">Profile</a></li>
         </ul>
         <div class="navbar-actions">
           <a href="notifications.html" class="navbar-icon" title="Notifications"><i class="fa-regular fa-bell"></i></a>
-          <a href="login.html" class="btn btn-outline btn-sm">Connexion</a>
+          <a href="login.html" class="btn btn-outline btn-sm">Login</a>
         </div>
       </nav>
     </div>
@@ -30,11 +30,11 @@
 
   <main class="form-page">
     <div class="container">
-      <a href="opportunities.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour aux opportunités</a>
+      <a href="opportunities.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to opportunities</a>
 
       <header class="page-header">
-        <h1><i class="fa-solid fa-plus-circle"></i> Publier une opportunité</h1>
-        <p class="page-subtitle">Partagez un stage, concours, formation ou événement avec la communauté.</p>
+        <h1><i class="fa-solid fa-plus-circle"></i> Publish an opportunity</h1>
+        <p class="page-subtitle">Share an internship, competition, training or event with the community.</p>
       </header>
 
       <p id="add-error" class="error-message hidden" role="alert"></p>
@@ -42,38 +42,38 @@
 
       <form id="add-opportunity-form" class="form-grid" novalidate>
         <label for="add-title" class="full-width">
-          Titre *
-          <input type="text" id="add-title" name="title" required maxlength="200" placeholder="ex. Stage développeur web">
+          Title *
+          <input type="text" id="add-title" name="title" required maxlength="200" placeholder="e.g. Web Developer Internship">
         </label>
 
         <label for="add-type">
           Type *
           <select id="add-type" name="type" required>
-            <option value="">— Choisir —</option>
-            <option value="internship">Stage</option>
-            <option value="competition">Concours</option>
-            <option value="training">Formation</option>
-            <option value="event">Événement</option>
+            <option value="">— Choose —</option>
+            <option value="internship">Internship</option>
+            <option value="competition">Competition</option>
+            <option value="training">Training</option>
+            <option value="event">Event</option>
           </select>
         </label>
 
         <label for="add-field">
-          Domaine
-          <input type="text" id="add-field" name="field" placeholder="ex. Informatique" maxlength="100">
+          Field
+          <input type="text" id="add-field" name="field" placeholder="e.g. IT" maxlength="100">
         </label>
 
         <label for="add-description" class="full-width">
           Description
-          <textarea id="add-description" name="description" rows="6" placeholder="Décrivez l'opportunité en détail…"></textarea>
+          <textarea id="add-description" name="description" rows="6" placeholder="Describe the opportunity in detail…"></textarea>
         </label>
 
         <label for="add-city">
-          Ville
-          <input type="text" id="add-city" name="city" placeholder="ex. Ouagadougou" maxlength="100">
+          City
+          <input type="text" id="add-city" name="city" placeholder="e.g. Ouagadougou" maxlength="100">
         </label>
 
         <label for="add-deadline">
-          Date limite
+          Deadline
           <input type="date" id="add-deadline" name="deadline">
         </label>
 
@@ -88,13 +88,13 @@
         </label>
 
         <label for="add-link" class="full-width">
-          Lien externe
-          <input type="url" id="add-link" name="link" placeholder="https://example.com/postuler" maxlength="255">
+          External link
+          <input type="url" id="add-link" name="link" placeholder="https://example.com/apply" maxlength="255">
         </label>
 
         <div class="form-actions full-width">
-          <button type="submit" class="btn btn-primary">Publier l'opportunité</button>
-          <a href="opportunities.html" class="btn btn-secondary">Annuler</a>
+          <button type="submit" class="btn btn-primary">Publish opportunity</button>
+          <a href="opportunities.html" class="btn btn-secondary">Cancel</a>
         </div>
       </form>
     </div>
@@ -103,20 +103,20 @@
   <footer class="enhanced-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="footer-logo"><i class="fa-solid fa-map-location-dot"></i> OpportuniMap</a>
-        <p class="footer-desc">Plateforme centralisant les opportunités professionnelles et éducatives au Burkina Faso.</p>
+        <a href="index.html" class="footer-logo"><i class="fa-solid fa-map-location-dot"></i> OpportunityMap</a>
+        <p class="footer-desc">Platform centralizing professional and educational opportunities in Burkina Faso.</p>
       </div>
       <div class="footer-links">
-        <h3>Liens rapides</h3>
+        <h3>Quick links</h3>
         <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="opportunities.html">Toutes les offres</a></li>
-          <li><a href="register.html">S'inscrire</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="opportunities.html">All offers</a></li>
+          <li><a href="register.html">Sign up</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 OpportuniMap — Burkina Faso</p>
+      <p>&copy; 2026 OpportunityMap — Burkina Faso</p>
     </div>
   </footer>
 
