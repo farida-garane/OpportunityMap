@@ -25,6 +25,7 @@ async function authMiddleware(req, res, next) {
         // 4. Let the request continue to the controller
         next();
     } catch (error) {
+        console.error('Auth error:', error.message);
         return res.status(401).json({ message: 'Invalid or expired token.' });
     }
 }
