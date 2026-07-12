@@ -8,6 +8,11 @@ async function register(req, res) {
       return res.status(400).json({ message: 'Name, email and password are required.' });
     }
 
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      return res.status(400).json({ message: 'Password must be at least 8 characters long and contain at least one letter and one number.' });
+    }
+
     const newUser = await authService.registerUser({ name, email, password, field, city, study_level });
     res.status(201).json(newUser);
   } catch (error) {

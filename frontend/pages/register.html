@@ -47,7 +47,7 @@
 
       <label for="register-password">
         Password *
-        <input type="password" id="register-password" name="password" required minlength="6" autocomplete="new-password">
+        <input type="password" id="register-password" name="password" required minlength="8" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" title="Password must be at least 8 characters long and contain at least one letter and one number." autocomplete="new-password">
       </label>
 
       <label for="register-field">
