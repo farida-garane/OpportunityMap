@@ -9,6 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterType = document.getElementById('filter-type');
   const filterField = document.getElementById('filter-field');
   const filterCity = document.getElementById('filter-city');
+
+  // Initialize from URL parameters if present
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('type') && filterType) {
+    filterType.value = urlParams.get('type');
+  }
+  if (urlParams.get('field') && filterField) {
+    filterField.value = urlParams.get('field');
+  }
+  if (urlParams.get('city') && filterCity) {
+    filterCity.value = urlParams.get('city');
+  }
   
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabPanels = document.querySelectorAll('.tab-panel');

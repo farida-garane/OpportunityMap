@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const oppId = e.detail;
     
     // Switch views
-    browseList.classList.add('hidden');
-    browseDetail.classList.remove('hidden');
+    if (browseList) browseList.classList.add('hidden');
+    if (browseDetail) browseDetail.classList.remove('hidden');
     
     // Show loading
-    detailContainer.innerHTML = '<p class="loading" style="text-align: center; padding: 40px; color: var(--color-text-muted);">Loading details...</p>';
+    if (detailContainer) detailContainer.innerHTML = '<p class="loading" style="text-align: center; padding: 40px; color: var(--color-text-muted);">Loading details...</p>';
 
     try {
       const data = await window.api.opportunities.getById(oppId);
@@ -27,16 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const opp = data.data ? data.data.opportunity || data.data : data;
       renderDetail(opp);
     } catch (error) {
-      detailContainer.innerHTML = `<p style="color: var(--color-error); text-align: center;">Error: ${error.message}</p>`;
+      if (detailContainer) detailContainer.innerHTML = `<p style="color: var(--color-error); text-align: center;">Error: ${error.message}</p>`;
     }
   });
 
   // Back button
   if (backBtn) {
     backBtn.addEventListener('click', () => {
+      // Clear id from URL
+      const newUrl = window.location.pathname;
+      window.history.pushState({}, '', newUrl);
+
       browseDetail.classList.add('hidden');
       browseList.classList.remove('hidden');
     });
+  }
+
+  // Check if there is an ID in the URL to open details automatically
+  const urlParams = new URLSearchParams(window.location.search);
+  const idFromUrl = urlParams.get('id');
+  if (idFromUrl) {
+    window.dispatchEvent(new CustomEvent('viewOpportunityDetail', { detail: idFromUrl }));
   }
 
   function renderDetail(opp) {
