@@ -99,11 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
         <div class="card-actions" style="margin-top: 16px; border-top: 1px solid var(--color-border); padding-top: 16px; display: flex; gap: 8px; align-items: center;">
           <button type="button" class="btn btn-outline btn-sm view-detail" data-id="${opp.id}">View details</button>
-          ${window.isAuthenticated() ? `
           <button type="button" class="btn btn-secondary btn-sm add-favorite" data-id="${opp.id}" title="Add to favorites">
             <i class="fa-regular fa-bookmark"></i>
           </button>
-          ` : ''}
         </div>
       `;
       listContainer.appendChild(card);
@@ -113,6 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.view-detail').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
+        if (!window.isAuthenticated()) {
+          alert("Veuillez vous connecter pour voir les détails de cette opportunité.");
+          window.location.href = 'login.html';
+          return;
+        }
         const id = e.currentTarget.getAttribute('data-id');
         window.dispatchEvent(new CustomEvent('viewOpportunityDetail', { detail: id }));
       });
@@ -122,6 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.add-favorite').forEach(btn => {
       btn.addEventListener('click', async (e) => {
         e.preventDefault();
+        if (!window.isAuthenticated()) {
+          alert("Veuillez vous connecter pour ajouter des favoris.");
+          window.location.href = 'login.html';
+          return;
+        }
         const id = e.currentTarget.getAttribute('data-id');
         const icon = e.currentTarget.querySelector('i');
         

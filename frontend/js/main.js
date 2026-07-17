@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       const notifLinks = document.querySelectorAll('a[href="notifications.html"] .menu-badge');
       notifLinks.forEach(badge => badge.textContent = summary.unreadNotificationsCount || 0);
 
+
+
     } catch (err) {
       // If token is invalid/expired, log out automatically
       console.warn("Session expirée ou invalide.");
