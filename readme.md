@@ -59,5 +59,3 @@ npm run dev
 
 Then, open your browser and navigate to **`http://localhost:5000`** to see the site in action.
 
----
-*Project designed and developed by Farida Garane.*
