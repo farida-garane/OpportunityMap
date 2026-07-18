@@ -39,9 +39,11 @@ app.use('/js', express.static(path.join(__dirname, '../frontend/js')));
 app.use('/images', express.static(path.join(__dirname, '../frontend/images')));
 
 // Fallback to index.html for any other route (useful if we had a SPA router, but still good to have)
-app.get('*', (req, res) => {
+app.use((req, res, next) => {
     if (!req.path.startsWith('/api')) {
         res.sendFile(path.join(__dirname, '../frontend/pages/index.html'));
+    } else {
+        next(); // For /api routes that aren't found, pass to the error middleware
     }
 });
 
