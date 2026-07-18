@@ -1,122 +1,63 @@
 # 🗺️ OpportuniMap
 
-**Centralizing professional opportunities in Burkina Faso — for equitable access to information.**
-
----
-
-## The Problem
-
-In Burkina Faso, access to professional opportunities (internships, competitions, trainings, events) is unequal:
-
-- Opportunities are concentrated in major cities, especially Ouagadougou.
-- Information circulates mostly by word-of-mouth, WhatsApp, or Facebook.
-- Students from other regions are disadvantaged, not due to a lack of merit, but a lack of access to information.
-
-## The Solution
-
-**OpportuniMap** centralizes, organizes, and broadcasts professional and educational opportunities in one place, featuring smart filtering and geolocation for more equitable access to information across the country.
+**Centralizing professional and educational opportunities in Burkina Faso for equitable access to information.**
 
 ![Home page](screenshots/home.png)
 
-## Features
+## The Project
 
-| Feature | Description |
-|---|---|
-| Centralization | Internships, competitions, trainings, and events grouped in a single place |
-| Smart Filtering | Search by type, field, and city |
-| Interactive Map | City-level overview + location per opportunity |
-| Personalized Recommendations | Highlighted based on the user profile's field/city |
-| Notifications | Alerts for new opportunities |
-| Add Opportunities | Community publishing by users |
-| Favorites | Save to apply later |
-| Dashboard | Personal summary: favorites, publications, notifications |
+In Burkina Faso, access to opportunities (internships, competitions, training programs, events) is deeply unequal. Information often circulates through word-of-mouth, physical bulletin boards, or closed groups, and is heavily concentrated in major cities. This disadvantages many students and young graduates—not because of a lack of merit, but simply due to a lack of access to information.
 
+**OpportuniMap** solves this problem by providing a centralized, public, and geolocation-based web platform. The project relies on a comprehensive and modern architecture to ensure a seamless experience:
+
+- **Backend**: A robust API built with Node.js and Express to handle the application's core logic.
+- **Database**: PostgreSQL securely stores user profiles, opportunity listings, and favorites.
+- **Frontend**: An interactive user interface (HTML/CSS/JS) integrating a Leaflet map to visualize the geographical distribution of opportunities.
+
+## Key Features
+
+- **Smart Filtering**: Easily search for opportunities by type (internship, competition, etc.), field, and city.
+- **Interactive Map**: Visualize the geographical distribution of opportunities across the country at a glance.
+- **Personalized Favorites**: Save interesting opportunities to your personal dashboard to apply later.
+- **Community Publishing**: Any registered user can publish and share new opportunities with the community.
+- **Secure Authentication**: User accounts are protected with JSON Web Tokens (JWT) and hashed passwords.
+
+![Login page](screenshots/login.png)
 ![Opportunity list with filters](screenshots/opportunities.png)
-
 ![Opportunity map by city](screenshots/map.png)
+![Opportunity details](screenshots/details.png)
+![User dashboard](screenshots/dashboard.png)
 
-## Tech Stack
+## Quick Start
 
-**Backend**: Node.js, Express, PostgreSQL, JWT + bcrypt 
-**Frontend**: HTML / CSS / JavaScript, Leaflet + OpenStreetMap for the map
+The project was designed to be easy to launch: the backend server automatically serves the user interface.
 
-## Architecture
+### 1. Prerequisites
+- [Node.js](https://nodejs.org/) installed on your machine.
+- [PostgreSQL](https://www.postgresql.org/) installed and configured.
 
-```
-OpportunityMap/
-├── backend/
-│   ├── config/        # PostgreSQL Connection
-│   ├── models/        # Table Declarations
-│   ├── controllers/    # HTTP Requests/Responses
-│   ├── services/       # Business Logic + SQL Queries
-│   ├── routes/         # API Endpoints
-│   ├── middleware/     # JWT Verification + Errors
-│   ├── seeds/           # Demo Data
-│   └── server.js
-└── frontend/
-    ├── pages/
-    ├── css/
-    └── js/
-```
+### 2. Database Configuration
+1. Create a local database (e.g., `opportunimap_db`).
+2. Run the provided SQL script in `backend/database/create_database.sql` to generate the table structures.
 
-## Installation
+### 3. Installation and Launch
+Open your terminal and run the following commands:
 
 ```bash
+# Enter the main server directory
 cd backend
+
+# Install all required dependencies
 npm install
-```
 
-Create a `.env` file:
-```env
-DB_HOST=localhost
-DB_USER=postgres
-DB_NAME=opportunimap
-DB_PASSWORD=your_password
-DB_PORT=5432
-JWT_SECRET=a_long_secret_string
-JWT_EXPIRES_IN=7d
-PORT=5000
-```
+# (Optional) Populate the database with mock opportunities to test the site
+node seeds/seed-run.js
 
-```bash
-node seeds/seed-run.js   # populates the database with demo data
+# Launch the application
 npm run dev
 ```
 
-The frontend can be opened directly in a browser (`frontend/pages/index.html`) and communicates with the API at `http://localhost:5000/api`.
+Then, open your browser and navigate to **`http://localhost:5000`** to see the site in action.
 
-## Main API Endpoints
-
-| Method | Endpoint | Protected? |
-|---|---|---|
-| POST | `/api/auth/register` | No |
-| POST | `/api/auth/login` | No |
-| GET | `/api/opportunities` | No |
-| POST | `/api/opportunities` | Yes |
-| GET | `/api/favorites` | Yes |
-| GET | `/api/notifications` | Yes |
-| GET | `/api/dashboard` | Yes |
-
-## Design Choices
-
-- **Mock Data**: The demo uses mock opportunities, due to the lack of real partnerships established at this stage.
-- **City-level Map Only**: Since the data is mock, the map displays the city rather than inventing a precise address, to remain honest about what is actually verifiable.
-- **UUIDs rather than Sequential IDs**: Prevents guessing the existence of other records in the database.
-
-![Opportunity details with location map](screenshots/details.png)
-
-## Security
-
-- Passwords hashed using `bcrypt`
-- Parameterized SQL queries (preventing SQL injections)
-- JWT Authentication for any create/update/delete action
-- Ownership verification: only the creator can modify/delete their opportunity
-
-## Current Project Status
-
-- **Backend**: Complete and functional (authentication, opportunities, favorites, notifications, dashboard)
-- **Frontend**: Complete and functional (Home, opportunities list/filtering/map, publishing, registration, login, profile, and favorites integration). *Only minor UI polish remaining.*
-
-## AI Usage
-
-This project was developed with the help of Antigravity, a code editor integrating artificial intelligence tools, used to structure the backend architecture, debug errors, clarify security best practices, and assist in frontend development. The design decisions and final implementation were carried out by Farida Garane, author of the project.
+---
+*Project designed and developed by Farida Garane.*

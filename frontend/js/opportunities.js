@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         if (!window.isAuthenticated()) {
-          alert("Veuillez vous connecter pour voir les détails de cette opportunité.");
+          alert("Please log in to view the details of this opportunity.");
           window.location.href = 'login.html';
           return;
         }
@@ -126,19 +126,20 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', async (e) => {
         e.preventDefault();
         if (!window.isAuthenticated()) {
-          alert("Veuillez vous connecter pour ajouter des favoris.");
+          alert("Please log in to add favorites.");
           window.location.href = 'login.html';
           return;
         }
-        const id = e.currentTarget.getAttribute('data-id');
-        const icon = e.currentTarget.querySelector('i');
+        const btn = e.currentTarget;
+        const id = btn.getAttribute('data-id');
+        const icon = btn.querySelector('i');
         
         try {
           icon.className = 'fa-solid fa-spinner fa-spin';
           await window.api.favorites.add(id);
           icon.className = 'fa-solid fa-bookmark';
           icon.style.color = 'var(--color-secondary)';
-          e.currentTarget.disabled = true;
+          btn.disabled = true;
           alert('Added to favorites!');
         } catch (error) {
           icon.className = 'fa-regular fa-bookmark';

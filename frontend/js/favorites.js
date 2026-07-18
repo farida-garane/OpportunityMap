@@ -83,9 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add remove listeners
     document.querySelectorAll('.remove-favorite').forEach(btn => {
       btn.addEventListener('click', async (e) => {
-        const id = e.currentTarget.getAttribute('data-id');
-        e.currentTarget.disabled = true;
-        e.currentTarget.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+        const btnRef = e.currentTarget;
+        const id = btnRef.getAttribute('data-id');
+        btnRef.disabled = true;
+        btnRef.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
         
         try {
           await window.api.favorites.remove(id);
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
           loadFavorites();
         } catch (err) {
           alert('Error removing: ' + err.message);
-          e.currentTarget.disabled = false;
+          btnRef.disabled = false;
         }
       });
     });
