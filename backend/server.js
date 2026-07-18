@@ -29,9 +29,20 @@ app.use('/api/favorites', favoriteRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
-// Simple health check route
-app.get('/', (req, res) => {
-    res.json({ message: 'OpportuniMap API is running.' });
+// ============================================
+// Serve Frontend (Static Files)
+// ============================================
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../frontend/pages')));
+app.use('/css', express.static(path.join(__dirname, '../frontend/css')));
+app.use('/js', express.static(path.join(__dirname, '../frontend/js')));
+app.use('/images', express.static(path.join(__dirname, '../frontend/images')));
+
+// Fallback to index.html for any other route (useful if we had a SPA router, but still good to have)
+app.get('*', (req, res) => {
+    if (!req.path.startsWith('/api')) {
+        res.sendFile(path.join(__dirname, '../frontend/pages/index.html'));
+    }
 });
 
 // ============================================

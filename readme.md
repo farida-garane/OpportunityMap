@@ -2,8 +2,6 @@
 
 **Centralizing professional opportunities in Burkina Faso — for equitable access to information.**
 
-Project submitted for the *"Global Challenges, Local Solutions"* hackathon on Devpost.
-
 ---
 
 ## The Problem
@@ -13,7 +11,6 @@ In Burkina Faso, access to professional opportunities (internships, competitions
 - Opportunities are concentrated in major cities, especially Ouagadougou.
 - Information circulates mostly by word-of-mouth, WhatsApp, or Facebook.
 - Students from other regions are disadvantaged, not due to a lack of merit, but a lack of access to information.
-- There is no single platform that centralizes these opportunities.
 
 ## The Solution
 
@@ -40,7 +37,7 @@ In Burkina Faso, access to professional opportunities (internships, competitions
 
 ## Tech Stack
 
-**Backend**: Node.js, Express, PostgreSQL, JWT + bcrypt
+**Backend**: Node.js, Express, PostgreSQL, JWT + bcrypt 
 **Frontend**: HTML / CSS / JavaScript, Leaflet + OpenStreetMap for the map
 
 ## Architecture
@@ -118,7 +115,7 @@ The frontend can be opened directly in a browser (`frontend/pages/index.html`) a
 ## Current Project Status
 
 - **Backend**: Complete and functional (authentication, opportunities, favorites, notifications, dashboard)
-- **Frontend**: Home, list/filtering/map of opportunities, and publishing completed — registration, login, favorites, notifications, dashboard, and profile in progress
+- **Frontend**: Complete and functional (Home, opportunities list/filtering/map, publishing, registration, login, profile, and favorites integration). *Only minor UI polish remaining.*
 
 ## AI Usage
 

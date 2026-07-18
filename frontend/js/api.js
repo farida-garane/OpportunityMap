@@ -3,7 +3,8 @@
  * Handles all requests to the Node.js/Express backend and manages JWT tokens.
  */
 
-const API_BASE_URL = 'https://opportunitymap-backend.onrender.com/api';
+const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1' && window.location.protocol !== 'file:';
+const API_URL = isProduction ? '/api' : 'http://localhost:5000/api';
 
 // --- AUTH & TOKEN MANAGEMENT ---
 
